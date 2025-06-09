@@ -1,23 +1,24 @@
-# 🧠 LeetCode Problem Solutions in C++
+# ⚡ LeetCode Solutions in C++
 
-Welcome to my LeetCode solutions repository! This collection contains solutions to a wide variety of coding problems that I have personally solved using **C++**. The aim of this repository is to strengthen problem-solving skills, build a solid grasp of algorithms and data structures, and prepare thoroughly for coding interviews and competitive programming.
+Welcome to my LeetCode playground – a carefully crafted archive of algorithmic challenges, all solved in **C++**. This repository is more than just a collection of files; it’s a chronicle of my journey to master data structures, algorithms, and coding patterns that power real-world systems.
 
----
-
-## 📘 What You'll Find Here
-
-This repository includes:
-
-- ✅ **Curated solutions** to LeetCode problems across all difficulty levels (Easy, Medium, Hard)
-- 🔢 **Well-organized** files with problem numbers and titles for easy navigation
-- 🧠 **Optimized code** with focus on time and space complexity
-- 📚 A growing collection that reflects consistent practice and learning
+Whether it’s for interview prep, competitive programming, or sharpening core problem-solving skills, this repo is a go-to source for clean, efficient, and thoughtfully written solutions.
 
 ---
 
-## 🧾 Repository Structure
+## 🔍 What’s Inside?
 
-Each file follows the naming convention:
+- ✅ **Handwritten C++ solutions** across Easy, Medium, and Hard levels  
+- 🔢 **Folder-by-problem** structure with kebab-case naming for clarity  
+- 📄 Each folder contains:
+  - A `.cpp` file with my solution  
+  - A `README.md` summarizing runtime, memory usage, and quick notes  
+- 🧠 Code that focuses on both **clarity** and **performance**
+
+---
+
+## 🗂️ Folder Structure
+
 Leetcode/
 │
 ├── Solutions/
@@ -29,82 +30,68 @@ Leetcode/
 │ │ └── README.md
 │ └── ...
 │
-└── README.md # You are here!****
+└── README.md # ← You're here!
 
-This ensures clarity and quick access to any solution.
 
----
-
-## 💡 Problem Categories Covered
-
-This repository touches on a broad range of problem types, including but not limited to:
-
-- Arrays & Strings
-- Linked Lists
-- Trees & Graphs
-- Dynamic Programming
-- Backtracking
-- Stacks & Queues
-- Greedy Algorithms
-- Sliding Window
-- Binary Search
-- Recursion
-- Bit Manipulation
-- Heap/Priority Queue
-- Trie
-- Hashing
+Each directory is easy to navigate and search — designed to scale with hundreds of problems.
 
 ---
 
-## 💡 What's Inside
+## 🧩 Categories Covered
 
-- ✅ Clean and well-documented **C++ solutions**
-- 🔢 Organized by problem ID and title using kebab-case folder names
-- 📄 Each folder contains:
-  - `.cpp` file with the solution
-  - `README.md` summarizing time and space performance (as reported by LeetCode)
+This repository spans across multiple problem domains, including:
 
----
+- Arrays & Strings  
+- Linked Lists  
+- Trees, Graphs & DFS/BFS  
+- Dynamic Programming  
+- Backtracking & Recursion  
+- Binary Search & Sliding Window  
+- Stacks, Queues & Heaps  
+- Tries & Hashing  
+- Greedy Techniques  
+- Bit Manipulation  
+- Math & Combinatorics  
 
-## 🧠 Why This Repository?
-
-This is more than just a storage of code — it's a growing archive of my journey through algorithmic problem solving. It serves to:
-
-- Reinforce **data structure and algorithm** concepts
-- Improve **code clarity, optimization, and performance**
-- Act as a personal **interview prep toolkit**
-- Keep track of progress through **consistent practice**
-
----
-
-## 📈 Progress
-
-I regularly update this repository as I solve more problems. Each commit reflects continuous effort and learning.
-
-You can explore the problems by checking the commit history or browsing through the repository files.
+You’ll find foundational patterns, as well as advanced logic designed for optimization.
 
 ---
 
-## 📌 Goals
+## 🚀 Why This Exists
 
-- Solve a diverse set of 500+ problems
-- Focus on quality and clarity over quantity
-- Review and improve older solutions
-- Master patterns and techniques for real-world scenarios
+I started this repo with three goals in mind:
 
----
+- 🧠 **Build a rock-solid base** in data structures and algorithms  
+- 🛠️ **Write clean, reusable C++ code** with a focus on time & space complexity  
+- 💼 **Stay interview-ready** for top tech companies and system design roles  
 
-## 🤝 Contributions
-
-This is a personal archive and not open to external contributions at the moment. However, if you find this repository useful, feel free to ⭐ star it — your support is appreciated!
+Over time, it’s evolved into a personal toolkit that I reference, revisit, and refine.
 
 ---
 
-## 🔗 Connect With Me
+## 📈 Roadmap
 
-- 💼 [LinkedIn]([https://www.linkedin.com/in/jeel3105/]) <!-- (Replace with your LinkedIn) -->
-- 📧 [Email](mailto:pateljeel3105@gmail.com) <!-- (Replace with your email) -->
-- - 📧 [Website]([[https://www.linkedin.com/in/your-link])
+- ☑ Solve 300+ problems with full coverage across core categories  
+- 🔁 Refactor older solutions with better patterns and STL usage  
+- ✍️ Add solution explanations and complexity breakdowns  
+- 📊 Integrate markdown indexing or tags for faster topic search  
+
 ---
 
-_“Practice does not make perfect. Only perfect practice makes perfect.” – Vince Lombardi_
+## 🌟 Feedback & Support
+
+If you find this repo useful, give it a ⭐!  
+It motivates me to keep pushing, solving, and sharing.
+
+---
+
+## 🙋‍♂️ About Me
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/jeel3105/)  
+- 📧 [Email](mailto:pateljeel3105@gmail.com)  
+- 🌐 [Portfolio Website](https://your-website-link.com) <!-- Replace with your actual portfolio if available -->
+
+---
+
+> “Code is not just meant to work. It's meant to be read, reasoned about, and reused.”  
+> – A coder who reads the docs 😄
