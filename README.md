@@ -17,21 +17,21 @@ Whether it’s for interview prep, competitive programming, or sharpening core p
 
 ---
 
-## 🗂️ Folder Structure
+## 📂 Folder Structure
 
+```
 Leetcode/
-│
 ├── Solutions/
-│ ├── 2095-minimum-number-of-swaps-to-make-the-string-balanced/
-│ │ ├── minimum-number-of-swaps-to-make-the-string-balanced.cpp
-│ │ └── README.md
-│ ├── 344-reverse-string/
-│ │ ├── reverse-string.cpp
-│ │ └── README.md
-│ └── ...
-│
-└── README.md # ← You're here!
-
+│   ├── 2095-minimum-number-of-swaps-to-make-the-string-balanced/
+│   │   ├── minimum-number-of-swaps-to-make-the-string-balanced.cpp
+│   │   └── README.md
+│   ├── 344-reverse-string/
+│   │   ├── reverse-string.cpp
+│   │   └── README.md
+│   └── ...
+├── main.cpp                # Optional scratchpad / testing space
+└── README.md              # ← You're here!
+```
 
 Each directory is easy to navigate and search — designed to scale with hundreds of problems.
 
