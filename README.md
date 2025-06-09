@@ -29,7 +29,6 @@ Leetcode/
 │   │   ├── reverse-string.cpp
 │   │   └── README.md
 │   └── ...
-├── main.cpp                # Optional scratchpad / testing space
 └── README.md              # ← You're here!
 ```
 
