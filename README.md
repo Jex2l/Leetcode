@@ -89,7 +89,7 @@ It motivates me to keep pushing, solving, and sharing.
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/jeel3105/)  
 - 📧 [Email](mailto:pateljeel3105@gmail.com)  
-- 🌐 [Portfolio Website]((https://jex2l.github.io/My-Resume/)) <!-- Replace with your actual portfolio if available -->
+- 🌐 [Portfolio Website](https://jex2l.github.io/My-Resume/) <!-- Replace with your actual portfolio if available -->
 
 ---
 
