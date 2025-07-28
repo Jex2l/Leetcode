@@ -3,7 +3,6 @@ public:
     vector<int> leftRightDifference(vector<int>& nums) {
         vector<int> l={0};
         vector<int> r = {0};
-        vector<int> ans;
         // for(int i = 0; i<nums.size(); i++){
         //     int left = 0;
         //     int mid = i;
@@ -16,8 +15,8 @@ public:
         }
         
         for(int i = 0; i<nums.size(); i++)
-            ans.push_back(abs(l[i]-r[nums.size()-i-1]));
+            l[i]=abs(l[i]-r[nums.size()-i-1]);
         
-        return ans;
+        return l;
     }
 };
