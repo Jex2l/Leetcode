@@ -17,7 +17,6 @@ public:
         for(int i = 0; i < 9; i++){
             vector<int> x(10, 0);
             for(int j = 0; j < 9; j++){
-                cout<<board[j][i];
                 if(board[j][i]=='.')
                     continue;
                 else if(x[board[j][i]-'0'] == 0){
