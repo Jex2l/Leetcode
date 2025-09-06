@@ -15,21 +15,15 @@ void addsolution(vector<vector<int>> &ans, vector<vector<int>> &board, int n){
 bool isSafe(int row, int col, vector<vector<int>> &board, int n){
     int x = row;
     int y = col;
-
-    // Check left side in the same row
     while (y >= 0) {
         if (board[x][y] == 1) return false;
         y--;
     }
-
-    // Check upper-left diagonal
     x = row; y = col;
     while (x >= 0 && y >= 0) {
         if (board[x][y] == 1) return false;
         x--; y--;
     }
-
-    // Check lower-left diagonal
     x = row; y = col;
     while (x < n && y >= 0) {
         if (board[x][y] == 1) return false;
@@ -48,7 +42,7 @@ void solve(int col, vector<vector<int>> &ans, vector<vector<int>> &board, int n)
         if(isSafe(row, col, board, n)){
             board[row][col] = 1;
             solve(col + 1, ans, board, n);
-            board[row][col] = 0; // backtrack
+            board[row][col] = 0;
         }
     }
 }
@@ -59,8 +53,6 @@ public:
         vector<vector<int>> board(n, vector<int>(n, 0));
         vector<vector<int>> ans;
         solve(0, ans, board, n);
-
-        // Convert integer solutions to the required string format
         vector<vector<string>> res;
         for (auto &sol : ans) {
             vector<string> temp;
