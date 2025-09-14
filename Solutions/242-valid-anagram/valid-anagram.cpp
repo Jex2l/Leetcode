@@ -4,23 +4,17 @@ public:
         if(s.size() != t.size()){
             return false;
         }
-        vector<int> a;
-        vector<int> b;
-        for(int i = 0; i<s.size(); i++){
-            char c = s[i];
-            int ascii_value = c;
-            a.push_back(ascii_value); 
+        vector<int> arr(26, 0);
+        for (char ch : s) {
+            arr[ch - 'a']++;
         }
-        for(int i = 0; i<t.size(); i++){
-            char c = t[i];
-            int ascii_value = c;
-            b.push_back(ascii_value); 
+        for (char ch : t) {
+            if (arr[ch - 'a'] == 0) {
+                return false;
+            }
+            arr[ch - 'a']--;
         }
-        sort(a.begin(), a.end());
-        sort(b.begin(), b.end());
-        if(a == b){
-            return true;
-        }
-        return false;        
+
+        return true;      
     }
 };
