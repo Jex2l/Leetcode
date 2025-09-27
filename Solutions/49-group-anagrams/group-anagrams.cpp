@@ -18,22 +18,36 @@ string getHash(string &s) {
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<vector<string>> res;
-        unordered_map<string, int> mp;
-        for (int i = 0; i < strs.size(); i++) {
-            string key = getHash(strs[i]);
+        // vector<vector<string>> res;
+        // unordered_map<string, int> mp;
+        // for (int i = 0; i < strs.size(); i++) {
+        //     string key = getHash(strs[i]);
         
-            // If key is not present in the hash map, add
-            // an empty group (vector) in the result and
-            // store the index of the group in hash map
-            if (mp.find(key) == mp.end()) {
-                mp[key] = res.size();
-                res.push_back({});
-            }
+        //     // If key is not present in the hash map, add
+        //     // an empty group (vector) in the result and
+        //     // store the index of the group in hash map
+        //     if (mp.find(key) == mp.end()) {
+        //         mp[key] = res.size();
+        //         res.push_back({});
+        //     }
         
-            // Insert the string in its correct group
-            res[mp[key]].push_back(strs[i]);
+        //     // Insert the string in its correct group
+        //     res[mp[key]].push_back(strs[i]);
+        // }
+        // return res;
+        unordered_map<string, vector<string>> buckets;
+
+        for (const auto& s : strs) {
+            string key = s;
+            sort(key.begin(), key.end());   // signature
+            buckets[key].push_back(s);           // keep original
         }
-        return res;
+
+        vector<vector<string>> result;
+        result.reserve(buckets.size());
+        for (auto& kv : buckets) {
+            result.push_back(move(kv.second));
+        }
+        return result;
     }
 };
