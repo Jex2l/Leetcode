@@ -10,8 +10,6 @@ public:
             if(x[a-1] != candyType[i]){
                 x.push_back(candyType[i]);
                 a++;
-                cout<<x[a-1];
-                cout<<a;
             }
         }
         if(n/2 >= a){
