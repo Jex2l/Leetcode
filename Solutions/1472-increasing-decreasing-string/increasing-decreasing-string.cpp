@@ -1,36 +1,53 @@
+// class Solution {
+// public:
+//     string sortString(string s) {
+//         int cnt[26] = {0};
+//         for (char ch : s) cnt[ch - 'a']++;
+//         string res = "";
+//         int n = s.size();
+//         while (res.size() < n) {
+//             for (int i = 0; i < 26; i++) {
+//                 if (cnt[i] > 0) {
+//                     res += char(i + 'a');
+//                     cnt[i]--;
+//                 }
+//             }
+//             for (int i = 25; i >= 0; i--) {
+//                 if (cnt[i] > 0) {
+//                     res += char(i + 'a');
+//                     cnt[i]--;
+//                 }
+//             }
+//         }
+//         return res;
+//     }
+// };
 class Solution {
 private:
-    void maxstr(vector<int> &z, vector<int>& a){
-        if(z.empty()) return;
-        a.push_back(z[0]);
-        int d = z[0];
-        z.erase(z.begin());
-        for(int i = 0; i< z.size(); ){
-            if(d < z[i]){
-                a.push_back(z[i]);
-                d = z[i];
-                if (i < z.size()) z.erase(z.begin() + i);
-            }
-            else{
-                i++;
-            }
-        }
-    }
-    void minstr(vector<int> &z, vector<int>& a){
-        if(z.empty()) return;
-        a.push_back(z[0]);
-        int d = z[0];
-        z.erase(z.begin());
+    void maxstr(vector<int> &z, vector<int>& a, vector<bool>& used){
+        int d = -1e9;
 
-        for(int i = 0; i < z.size(); ) {
-            if(d > z[i]){
+        for(int i = 0; i < z.size(); i++){
+            if(!used[i] && z[i] > d){
                 a.push_back(z[i]);
                 d = z[i];
-                z.erase(z.begin() + i);
+                used[i] = true;
             }
-            else i++;
         }
     }
+
+    void minstr(vector<int> &z, vector<int>& a, vector<bool>& used){
+        int d = 1e9;
+
+        for(int i = z.size()-1; i >= 0; i--){
+            if(!used[i] && z[i] < d){
+                a.push_back(z[i]);
+                d = z[i];
+                used[i] = true;
+            }
+        }
+    }
+
 
 public:
     string sortString(string s) {
@@ -41,12 +58,15 @@ public:
         }
         sort(x.begin(), x.end());
         vector<int> a;
-        while(x.size() > 0){
-            maxstr(x, a);
-            reverse(x.begin(), x.end());
-            if(x.empty()) break;   
-            minstr(x, a);
-            reverse(x.begin(), x.end());
+        vector<bool> used(x.size(), false);
+        int remaining = x.size();
+        while(remaining > 0){
+            int before = a.size();
+            maxstr(x, a, used);
+            remaining -= (a.size() - before);
+            before = a.size();
+            minstr(x, a, used);
+            remaining -= (a.size() - before);
         }
         string ans;
         for(int i = 0; i< a.size(); i++){
