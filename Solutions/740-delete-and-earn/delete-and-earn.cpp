@@ -1,10 +1,18 @@
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        int n = 10001;
-        vector<int> count(n);
-        for(auto &x : nums) count[x] += x;
-        for(int i = 2; i < n; ++i) count[i] = max(count[i] + count[i - 2], count[i - 1]);
-        return count[n - 1];
+        vector<int> points(10001, 0);
+        for(int x : nums)
+            points[x] += x;
+        int prev2 = 0;
+        int prev1 = 0;
+        for(int i = 0; i <= 10000; i++){
+            int take = prev2 + points[i];
+            int skip = prev1;
+            int curr = max(take, skip);
+            prev2 = prev1;
+            prev1 = curr;
+        }
+        return prev1;
     }
 };
