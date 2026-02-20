@@ -1,33 +1,42 @@
-void addCount(int count, vector<char>& y) {
-    if(count > 1) {
-        string temp = "";
-        int t = count;
-        while(t > 0) {
-            temp += char(t % 10 + '0');
-            t /= 10;
-        }
-        for(int j = temp.size() - 1; j >= 0; j--) y.push_back(temp[j]);
-    }
-}
-
 class Solution {
 public:
     int compress(vector<char>& chars) {
-        vector<int> x;
-        vector<char> y;
-        int n = chars.size();
-        int count = 1;
-        for(int i = 1; i<n; i++){
-            if(chars[i] != chars[i-1]){
-                y.push_back(chars[i-1]);
-                addCount(count, y);
-                count = 1;
+        int l=0;
+        char prev=chars[0];
+        int count =0;
+        string t="";
+        for(int i=0;i<chars.size();i++)
+        {
+            if(chars[i]==prev)
+                count++;
+            else
+            {
+                chars[l]=prev;
+                l++;
+                if(count>1)
+                {
+                    t=to_string(count);
+                    for(int j=0;j<t.size();j++)
+                    {
+                        chars[l]=t[j];
+                        l++;
+                    }
+                }
+                count=1;
+                prev=chars[i];
             }
-            else count++;
         }
-        y.push_back(chars[n-1]);
-        addCount(count, y);
-        chars = y;
-        return y.size();
+        chars[l]=prev;
+        l++;
+        if(count>1)
+        {
+            t=to_string(count);
+            for(int j=0;j<t.size();j++)
+            {
+                chars[l]=t[j];
+                l++;
+            }
+        }
+        return l;
     }
 };
