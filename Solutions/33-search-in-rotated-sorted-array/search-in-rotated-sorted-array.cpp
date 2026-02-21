@@ -1,23 +1,19 @@
-int findchangepoint(vector<int>& nums){
-    int s = 0;
-    int e = nums.size() - 1;
-    while (s < e) {
-        int mid = s + (e - s) / 2;
-        if (nums[mid] > nums[e]) {
-            s = mid + 1;
-        } else {
-            e = mid;
-        }
+int findPivot(vector<int> &arr, int lo, int hi) {
+    while (lo <= hi) {
+        if (arr[lo] <= arr[hi])         return lo;
+        int mid = (lo + hi) / 2;
+        if (arr[mid] > arr[hi]) lo = mid + 1;
+        else hi = mid;
     }
-    return s;
+    return lo;
 }
 
-int searchelement(vector<int>& nums, int target, int start, int end){
-    while(start <= end){
-        int mid = start + (end-start)/2;
-        if(nums[mid] == target) return mid;
-        if(nums[mid] < target) start = mid + 1;
-        else end = mid -1;
+int binarySearch(vector<int> &arr, int lo, int hi, int x) {
+    while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (arr[mid] == x) return mid;
+        if (arr[mid] < x) lo = mid + 1;
+        else hi = mid - 1;
     }
     return -1;
 }
@@ -26,13 +22,10 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
         int n = nums.size();
-        if(n == 0) return -1;
-        if(nums[0] <= nums[n-1]){
-            return searchelement(nums, target, 0, n-1);
-        }
-        int index = findchangepoint(nums);
-        int right = searchelement(nums, target, index, n-1);
-        if(right != -1) return right;
-        return searchelement(nums, target, 0, index-1);
+        int pivot = findPivot(nums, 0, n - 1);
+        if (nums[pivot] == target) return pivot;
+        if (pivot == 0) return binarySearch(nums, 0, n - 1, target);
+        if (nums[0] <= target) return binarySearch(nums, 0, pivot - 1, target);
+        return binarySearch(nums, pivot + 1, n - 1, target);
     }
 };
