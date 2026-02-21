@@ -18,16 +18,14 @@ class Solution {
                 temp.append(s.substr(startIndex));
                 ans.push_back(temp);
             }
-            return;
+            else return;
         }
-        for (int curPos = 1; curPos <= 3 && curPos <= remainingLength;
-             ++curPos) {
+        for (int curPos = 1; curPos <= 3 && curPos <= remainingLength; ++curPos) {
             dots.push_back(curPos);
             if (valid(s, startIndex, curPos)) helper(s, startIndex + curPos, dots, ans);
             dots.pop_back();
         }
     }
-
 public:
     vector<string> restoreIpAddresses(string s) {
         vector<int> dots;
