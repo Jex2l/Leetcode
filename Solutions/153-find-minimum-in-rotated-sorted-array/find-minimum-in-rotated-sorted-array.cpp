@@ -12,7 +12,6 @@ public:
     }
 
     int findMin(vector<int>& nums) {
-        int ans = nums[pivot(nums, 0, nums.size() - 1)];
-        return ans;
+        return nums[pivot(nums, 0, nums.size() - 1)];
     }
 };
