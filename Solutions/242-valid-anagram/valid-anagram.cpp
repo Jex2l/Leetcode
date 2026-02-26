@@ -1,20 +1,15 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if(s.size() != t.size()){
-            return false;
+        unordered_map<char, int> one;
+        unordered_map<char, int> two;
+        for(char i : s){
+            one[i]++;
         }
-        vector<int> arr(26, 0);
-        for (char ch : s) {
-            arr[ch - 'a']++;
+        for(char i : t){
+            two[i]++;
         }
-        for (char ch : t) {
-            if (arr[ch - 'a'] == 0) {
-                return false;
-            }
-            arr[ch - 'a']--;
-        }
-
-        return true;      
+        if(one == two) return true;
+        return false;
     }
 };
