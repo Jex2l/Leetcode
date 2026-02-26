@@ -5,8 +5,7 @@ public:
         int maxArea = 0;
         while(left < right) {
             int h = min(height[left], height[right]);
-            int width = right - left;
-            maxArea = max(maxArea, h * width);
+            maxArea = max(maxArea, h * (right - left));
             if(height[left] < height[right]) left++;
             else right--;
         }
