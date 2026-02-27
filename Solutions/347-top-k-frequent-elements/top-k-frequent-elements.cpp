@@ -5,20 +5,20 @@ public:
         for(int x : nums){
             freq[x]++;
         }
-        vector<pair<int,int>> v;
-        for(auto &p : freq){
-            v.push_back({p.first, p.second});
-        }
-        sort(v.begin(), v.end(), [](auto &a, auto &b){
-            return a.second > b.second;
-        });
         vector<int> ans;
-        int i = 0;
-        while(k > 0){
-            ans.push_back(v[i].first);
-            i++;
-            k--;
+        for (auto &p : freq) {
+            int num = p.first;
+            ans.push_back(num);
+            int i = (int)ans.size() - 1;
+            while (i > 0 && freq[ans[i]] > freq[ans[i - 1]]) {
+                int temp = ans[i];
+                ans[i] = ans[i - 1];
+                ans[i - 1] = temp;
+                i--;
+            }
         }
-        return ans;
+        vector<int> final;
+        for(int i = 0; i < k; i++) final.push_back(ans[i]);
+        return final;
     }
 };
