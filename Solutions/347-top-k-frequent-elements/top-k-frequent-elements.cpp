@@ -5,20 +5,19 @@ public:
         for(int x : nums){
             freq[x]++;
         }
-        vector<int> ans;
-        for (auto &p : freq) {
-            int num = p.first;
-            ans.push_back(num);
-            int i = (int)ans.size() - 1;
-            while (i > 0 && freq[ans[i]] > freq[ans[i - 1]]) {
-                int temp = ans[i];
-                ans[i] = ans[i - 1];
-                ans[i - 1] = temp;
-                i--;
+        vector<vector<int>> buckets(nums.size() + 1);
+        for(auto &p : freq){
+            int number = p.first;
+            int count  = p.second;
+            buckets[count].push_back(number);
+        }
+        vector<int> result;
+        for(int i = nums.size(); i >= 1 && result.size() < k; i--) {
+            for(int num : buckets[i]) {
+                result.push_back(num);
+                if(result.size() == k) break;
             }
         }
-        vector<int> final;
-        for(int i = 0; i < k; i++) final.push_back(ans[i]);
-        return final;
+        return result;
     }
 };
