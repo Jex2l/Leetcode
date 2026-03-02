@@ -14,8 +14,8 @@ public:
         if(head == nullptr || head->next == nullptr) return head;
         ListNode* curr = head;
         ListNode* prev = nullptr;
-        while(curr != nullptr){
-            ListNode* temp = curr->next;;
+        while(curr!= nullptr){
+            ListNode* temp = curr->next;
             curr->next = prev;
             prev = curr;
             curr = temp;
