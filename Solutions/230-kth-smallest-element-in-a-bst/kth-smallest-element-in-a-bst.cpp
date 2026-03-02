@@ -11,20 +11,13 @@
  */
 
 int solve(TreeNode *root, int &i, int k){
-    if(root == NULL){
-        return -1;
-    }
+    if(root == NULL) return -1;
     int left = solve(root->left, i, k);
-    if(left!= -1){
-        return left;
-    }
+    if(left!= -1) return left;
     i++;
-    if(i==k){
-        return root->val;
-    }
+    if(i==k) return root->val;
     return solve(root->right, i ,k);
 }
-
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
