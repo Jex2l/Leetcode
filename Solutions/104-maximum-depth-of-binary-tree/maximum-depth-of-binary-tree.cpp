@@ -28,9 +28,7 @@ public:
                 if(temp->left) q.push(temp->left);
                 if(temp->right) q.push(temp->right);
             }
-            
         }
         return size;
-
     }
 };
