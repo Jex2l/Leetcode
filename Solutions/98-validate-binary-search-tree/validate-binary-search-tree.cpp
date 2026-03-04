@@ -11,16 +11,12 @@
  */
 class Solution {
 public:
-    bool validate(TreeNode* root, TreeNode* low, TreeNode* high) {
-        if (root == nullptr) return true;
-        if ((low != nullptr and root->val <= low->val) or
-            (high != nullptr and root->val >= high->val)) {
-            return false;
-        }
-        return validate(root->right, root, high) and
-               validate(root->left, low, root);
+    bool validate(TreeNode* root, TreeNode* left, TreeNode* right){
+        if(root == nullptr) return true;
+        if((left != nullptr && root->val <= left->val)||(right != nullptr &&root->val >= right->val)) return false;
+        return validate(root->right, root, right) && validate(root->left, left, root);
     }
-    bool isValidBST(TreeNode* root) { 
-        return validate(root, nullptr, nullptr); 
+    bool isValidBST(TreeNode* root) {
+        return validate(root, nullptr, nullptr);
     }
 };
