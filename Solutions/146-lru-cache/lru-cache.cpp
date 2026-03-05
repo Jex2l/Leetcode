@@ -17,35 +17,27 @@ public:
         head->next = tail;
         tail->prev = head;
     }
-
     int get(int key) {
-        if (dic.find(key) == dic.end()) {
-            return -1;
-        }
-
+        if (dic.find(key) == dic.end()) return -1;
         Node *node = dic[key];
         remove(node);
         add(node);
         return node->val;
     }
-
     void put(int key, int value) {
         if (dic.find(key) != dic.end()) {
             Node *oldNode = dic[key];
             remove(oldNode);
         }
-
         Node *node = new Node(key, value);
         dic[key] = node;
         add(node);
-
         if (dic.size() > capacity) {
             Node *nodeToDelete = head->next;
             remove(nodeToDelete);
             dic.erase(nodeToDelete->key);
         }
     }
-
     void add(Node *node) {
         Node *previousEnd = tail->prev;
         previousEnd->next = node;
@@ -53,7 +45,6 @@ public:
         node->next = tail;
         tail->prev = node;
     }
-
     void remove(Node *node) {
         node->prev->next = node->next;
         node->next->prev = node->prev;
