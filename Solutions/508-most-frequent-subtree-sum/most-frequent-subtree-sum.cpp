@@ -12,20 +12,20 @@
 class Solution {
 public:
     vector<int> findFrequentTreeSum(TreeNode* root) {
-        unordered_map<int, int> mp;
-        dfs(root, mp);
-        int maxKey = INT_MIN;
-        unordered_map<int, vector<int>> mp2;
-        for(auto it : mp){
-            mp2[it.second].push_back(it.first);
-            maxKey = max(maxKey, it.second);
+        unordered_map<int, int> x;
+        dfs(root, x);
+        int maxcnt = INT_MIN;
+        unordered_map<int, vector<int>> x2;
+        for(auto i : x){
+            x2[i.second].push_back(i.first);
+            maxcnt = max(maxcnt, i.second);
         }
-        return mp2[maxKey];
+        return x2[maxcnt];
     }
-    int dfs(TreeNode* root, unordered_map<int, int> &mp){
+    int dfs(TreeNode* root, unordered_map<int, int> &x){
         if(root == nullptr) return 0;
-        int val = root->val + dfs(root->left, mp) + dfs(root->right, mp);
-        mp[val]++;
+        int val = root->val + dfs(root->left, x) + dfs(root->right, x);
+        x[val]++;
         return val;
     }
 };
