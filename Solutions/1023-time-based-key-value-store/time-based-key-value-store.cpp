@@ -1,19 +1,34 @@
 class TimeMap {
 public:
+    unordered_map<string , vector<pair<int , string>>>mp;
     TimeMap() {
         
     }
-    
-    unordered_map<string, vector<pair<int, string>>> m;
     void set(string key, string value, int timestamp) {
-        m[key].push_back({ timestamp, value });
+        pair<int , string>temp = {timestamp , value};
+        mp[key].push_back(temp);
     }
+
     string get(string key, int timestamp) {
-        auto it = upper_bound(begin(m[key]), end(m[key]), pair<int, string>(timestamp, ""), [](
-        const pair<int, string>& a, const pair<int, string>& b) { return a.first < b.first; });
-        return it == m[key].begin() ? "" : prev(it)->second;
+        if(mp.find(key) == mp.end()) return "";
+        auto &temp = mp[key];
+        int n = temp.size();
+        string ans = "";
+        int l = 0;
+        int r = n-1;
+        while(l <= r){
+            int mid = l + (r - l)/2;
+            if(temp[mid].first <= timestamp){
+                ans = temp[mid].second;
+                l = mid + 1;
+            }
+            else r = mid - 1;
+        }
+        return ans;
+    
     }
 };
+
 
 /**
  * Your TimeMap object will be instantiated and called as such:
