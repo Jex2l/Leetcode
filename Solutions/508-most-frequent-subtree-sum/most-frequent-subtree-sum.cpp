@@ -11,21 +11,22 @@
  */
 class Solution {
 public:
-    vector<int> findFrequentTreeSum(TreeNode* root) {
-        unordered_map<int, int> x;
-        dfs(root, x);
-        int maxcnt = INT_MIN;
-        unordered_map<int, vector<int>> x2;
-        for(auto i : x){
-            x2[i.second].push_back(i.first);
-            maxcnt = max(maxcnt, i.second);
-        }
-        return x2[maxcnt];
-    }
     int dfs(TreeNode* root, unordered_map<int, int> &x){
         if(root == nullptr) return 0;
         int val = root->val + dfs(root->left, x) + dfs(root->right, x);
         x[val]++;
         return val;
+    }
+    vector<int> findFrequentTreeSum(TreeNode* root) {
+        if(root == nullptr) return {};
+        unordered_map<int, int> x;
+        dfs(root, x);
+        unordered_map<int, vector<int>> y;
+        int ans = INT_MIN;
+        for(auto i : x){
+            y[i.second].push_back(i.first);
+            ans = max(ans, i.second);
+        }
+        return y[ans];
     }
 };
