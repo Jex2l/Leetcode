@@ -1,17 +1,13 @@
 class Solution {
 public:
-    int solve(vector<int>& coins, int amount, vector<int>& dp) {
-        if (amount == 0) return 0;
-        if (amount < 0) return 1e9;
-        if (dp[amount] != -1) return dp[amount];
-        int ans = 1e9;
-        for (int coin : coins) ans = min(ans, 1 + solve(coins, amount - coin, dp));
-        return dp[amount] = ans;
-    }
-
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount + 1, -1);
-        int ans = solve(coins, amount, dp);
-        return ans >= 1e9 ? -1 : ans;
+        vector<int> minCoins(amount + 1, amount + 1);
+        minCoins[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.size(); j++) {
+                if (i - coins[j] >= 0) minCoins[i] = min(minCoins[i], 1 + minCoins[i - coins[j]]);
+            }
+        }
+        return minCoins[amount] != amount + 1 ? minCoins[amount] : -1;        
     }
 };
