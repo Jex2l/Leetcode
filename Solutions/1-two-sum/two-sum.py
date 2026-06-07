@@ -1,8 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}
+        sets = {}
         for i, num in enumerate(nums):
             complement = target - num
-            if complement in seen:
-                return [seen[complement], i]
-            seen[num] = i
+            if complement in sets:
+                return [sets[complement], i]
+            sets[num] = i
+        return
