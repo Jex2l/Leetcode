@@ -9,44 +9,40 @@
  * };
  */
 
-class compare {
-public:
-    bool operator()(ListNode *a, ListNode *b) {
-        return a->val > b->val;
-    }
-};
-
 class Solution {
 public:
+
+    ListNode* merge_list(ListNode* l1, ListNode* l2) {
+        ListNode dummy(0);
+        ListNode* result = &dummy;
+        while(l1 && l2) {
+            if(l1->val > l2->val) {
+                result->next = l2;
+                l2 = l2->next;
+            }
+            else {
+                result->next = l1;
+                l1 = l1->next;
+            }
+            result = result->next;
+        }
+        if(l1) result->next = l1;
+        else result->next = l2;
+        return dummy.next;
+    }
+
+
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        priority_queue<ListNode*, vector<ListNode*>, compare> minHeap;
-
-        // Seed the heap with non-null heads
-        for (ListNode* node : lists) {
-            if (node) minHeap.push(node);
-        }
-
-        if (minHeap.empty()) return nullptr;
-
-        ListNode* head = nullptr;
-        ListNode* tail = nullptr;
-
-        while (!minHeap.empty()) {
-            ListNode* node = minHeap.top();
-            minHeap.pop();
-
-            if (!head) {
-                head = tail = node;
-            } else {
-                tail->next = node;
-                tail = node;
+        if(lists.empty()) return nullptr;
+        while(lists.size() > 1) {
+            vector<ListNode*> temp;
+            for(int i = 0; i < lists.size(); i += 2) {
+                ListNode* l1 = lists[i];
+                ListNode* l2 = (i + 1 < lists.size()) ? lists[i + 1] : nullptr;
+                temp.push_back(merge_list(l1, l2));
             }
-
-            if (node->next) {
-                minHeap.push(node->next);
-            }
+            lists = temp;
         }
-
-        return head;
+        return lists[0];
     }
 };
